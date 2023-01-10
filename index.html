@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="display-4 text-warning">Velkommen til Fyr og Flamme!</h1>
+        <h2>Get All WoodPellets</h2>
+        <li v-for="WoodPellet in woodPellets" :key="WoodPellet.id">
+            {{WoodPellet.id}} {{WoodPellet.brand}} {{WoodPellet.price}} {{WoodPellet.quality}}
+        </li>
+        <h5>Knappen nede under sortere efter kvalitet måske?</h5>
+        <button v-on:click="sortQuality()" class="btn btn-danger">Sort After Quality</button>
+        <h2>Get WoodPellet by id</h2>
+        <input v-model="woodPelletId" placeholder="Insert an Id for a WoodPellet here!" type="number">
+        <button v-on:click="getWoodPelletById(woodPelletId)" class="btn btn-primary">Get WoodPettle By Id</button>
+        <div v-if="WoodPellet">{{WoodPellet}}</div>
+
+        <h2>Add WoodPellet</h2>
+        <input v-model="addNewWoodPellet.brand" placeholder="Brand" type="text">
+        <input v-model="addNewWoodPellet.price" placeholder="Price" type="number">
+        <input v-model="addNewWoodPellet.quality" placeholder="Quality" type="number">
+        <button v-on:click="addWoodPellet()" class="btn btn-success">Add WoodPellet</button>
+        <div>{{addMessage}}</div>
+
+        <h2>Update WoodPellet</h2>
+        <input v-model="woodPelletIdUpdate" placeholder="id" type="number">
+        <input v-model="updateTheWoodPellet.brand" placeholder="brand" type="text">
+        <input v-model="updateTheWoodPellet.price" placeholder="price" type="number">
+        <input v-model="updateTheWoodPellet.quality" placeholder="quality" type="number">
+        <button v-on:click="updateWoodPellet(woodPelletIdUpdate)" class="btn btn-success">Update This WoodPellet</button>
+        <div>{{updateMessage}}</div>
+
+    
+        
+
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
